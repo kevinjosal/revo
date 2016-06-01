@@ -132,6 +132,9 @@
           <div class="center"">
             Revo
           </div>
+          <div class="right">
+          <input type="search" class="search-input" placeholder="Keyword""></input>
+          </div>
         </ons-toolbar>
         
         <div>
@@ -141,29 +144,28 @@
         <div>
           <img src="img/g-line.png" style="width: 90%; margin-left: 5%; margin-right: 5%; margin-bottom:3em;">
         </div>
-        
-        <div class="col-xs-6" style="text-align:center;">
+        <div class="col-xs-6" style="text-align:center; font-size: medium;">
             <img src="img/b.jpg" style="width: 100%;">
-            <h2>New Arrivals</h2>
+            <h3>New Arrivals</h3>
             <p>
             Rayakan Hari-Hari Kamu <br/>
             dengan Koleksi Terbaru Aldo
             </p>    
-            <ons-button id="push-button-third" onclick="fn.load('product.html')">Push page</ons-button>         
+            <ons-button id="push-button-third" onclick="fn.load('pria.html')">Pria</ons-button>         
         </div>
         
         <div class="col-xs-6" style="text-align:center;">
           <img src="img/c.jpg" style="width: 100%;">
-            <h2>Mango Collection</h2>
+            <h3>Mango Collection</h3>
             <p>
             Miliki koleksi blouse, dress, sepatu, <br/>
             dan aksesoris dari MANGO.
             </p>    
-            <ons-button  id="push-button-third" onclick="fn.load('about.html')">Push page</ons-button>     
+            <ons-button id="push-button-third" onclick="fn.load('wanita.html')">Wanita</ons-button>     
         </div>
            
         
-        <ons-button id="push-button-third" onclick="fn.load('home.html')">Push page</ons-button>
+        <ons-button id="push-button-third" onclick="fn.load('home.html')">Back To Top</ons-button>
         
       </ons-page>
     </ons-template>
@@ -182,7 +184,9 @@
         </ons-toolbar>
         <ons-carousel fullscreen swipeable auto-scroll overscrollable id="carousel">
           <ons-carousel-item style="background-color: #085078;">
+            <ons-button id="push-button-third" onclick="fn.load('home.html')">
             <img src="img/f.jpg" style="width: 100%;">
+            </ons-button>
           </ons-carousel-item>
           <ons-carousel-item style="background-color: #373B44;">
             <img src="img/g.jpg" style="width: 100%;">
@@ -224,13 +228,68 @@
               <ons-icon icon="md-menu"></ons-icon>
             </ons-toolbar-button>
           </div>
-          <div class="center">
+          <div class="center" >
             Anak
           </div>
         </ons-toolbar>
-        <p style="text-align: center; opacity: 0.6; padding-top: 20px;">
-          Ini Halaman Anak
-        </p>
+        <ons-row style="margin-top: 1em;">
+          <ons-col>
+            <div class="item-style">
+              <img src="img/baju1.jpg" style="width: 100%;">
+              <p>Ripped 2 Slim Fit Denim</p>
+              <p><b>Rp 1.000.000,-</b></p>
+            
+            </div>
+          </ons-col>
+          <ons-col>
+            <div class="item-style">
+                <img src="img/baju2.jpg" style="width: 100%;">
+                <p>Crows Denim - Casual</p>
+                <p><b>Rp 1.000.000,-</b></p>
+              
+            </div>
+          </ons-col>
+        </ons-row>
+        
+        <ons-row style="margin-top: 1em;">
+          <ons-col>
+            <div class="item-style">
+                <img src="img/baju3.jpg" style="width: 100%;">
+                <p>Slim Fit Chino Pants</p>
+                <p><b>Rp 1.000.000,-</b></p>
+              
+            </div>
+          </ons-col>
+          <ons-col>
+            <div class="item-style">
+                  <img src="img/baju4.jpg" style="width: 100%;">
+                  <p>Patch Zipper Pocket Sweat</p>
+                  <p><b>Rp 1.000.000,-</b></p>
+                
+            </div>
+          </ons-col>
+        </ons-row>
+
+        <ons-row style="margin-top: 1em;">
+          <ons-col>
+
+            <div class="item-style">
+              <img src="img/baju3.jpg" style="width: 100%;">
+              <p>Slim Fit Chino Pants</p>
+              <p><b>Rp 1.000.000,-</b></p>
+            
+            </div>
+
+          </ons-col>
+          <ons-col>
+          <div class="item-style">
+              <img src="img/baju4.jpg" style="width: 100%;">
+              <p>Patch Zipper Pocket Sweat</p>
+              <p><b>Rp 1.000.000,-</b></p>
+              
+            </div>
+          </ons-col>
+        </ons-row>
       </ons-page>
     </ons-template>
 

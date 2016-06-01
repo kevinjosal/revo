@@ -32,24 +32,252 @@
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
         <link rel="stylesheet" type="text/css" href="css/index.css">
         <link rel="stylesheet" href="lib/onsenui/css/onsenui.css"/>
+        <link rel="stylesheet" href="lib/onsenui/css/bootstrap.css"/>
         <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css"/>
         <title>Revo</title>
         <script src="lib/onsenui/js/onsenui.js"></script>
+        <!-- <script src="lib/onsenui/js/angular-onsenui.js"></script> -->
+ 
         <script>
-          ons.ready(function() {
+          var prev = function() {
+            var carousel = document.getElementById('carousel');
+            carousel.prev();
+          };
 
+          var next = function() {
+            var carousel = document.getElementById('carousel');
+            carousel.next();
+          };
+
+
+          ons.ready(function() {
+            window.fn = {};
+
+            window.fn.open = function() {
+              var menu = document.getElementById('menu');
+              menu.open();
+            };
+
+            var carousel = document.addEventListener('postchange', function(event) {
+                console.log('Changed to ' + event.activeIndex)
+              });
+
+
+            window.fn.load = function(page) {
+              var content = document.getElementById('content');
+              var menu = document.getElementById('menu');
+              content.load(page)
+                .then(menu.close.bind(menu));
+            };
+
+
+            window.fn.login = function(page) {
+              var username = document.getElementById('username').value;
+              var password = document.getElementById('password').value;
+              var content = document.getElementById('content');
+
+              if (username === 'bob' && password === 'secret') {
+                content.load(page);
+              }
+              else {
+                ons.notification.alert('Incorrect username or password.');
+              }
+            };
+            
           });
         </script>
             
     </head>
     
     <body>
-        <ons-navigator var="myNavigator">
-          <ons-page>
-            <ons-toolbar>
+
+    <ons-splitter>
+      <ons-splitter-side id="menu" side="left" width="220px" collapse swipeable>
+        <ons-page>
+          <ons-list>
+            <ons-list-item onclick="fn.load('home.html')" tappable>
               Revo
-            </ons-toolbar>
-          </ons-page>
-        </ons-navigator>
-    </body>
+            </ons-list-item>
+            <ons-list-item onclick="fn.load('login.html')" tappable>
+              Login
+            </ons-list-item>
+            <ons-list-item onclick="fn.load('cart.html')" tappable>
+              Cart
+            </ons-list-item>
+            <ons-list-item onclick="fn.load('wanita.html')" tappable>
+              Wanita
+            </ons-list-item>
+            <ons-list-item onclick="fn.load('pria.html')" tappable>
+              Pria
+            </ons-list-item>
+            <ons-list-item onclick="fn.load('anak.html')" tappable>
+              Anak
+            </ons-list-item>
+            
+            
+          </ons-list>
+        </ons-page>
+      </ons-splitter-side>
+      <ons-splitter-content id="content" page="home.html"></ons-splitter-content>
+    </ons-splitter>
+
+    <ons-template id="home.html">
+      <ons-page>
+        <ons-toolbar>
+          <div class="left">
+            <ons-toolbar-button onclick="fn.open()">
+              <ons-icon icon="md-menu"></ons-icon>
+            </ons-toolbar-button>
+          </div>
+          <div class="center"">
+            Revo
+          </div>
+        </ons-toolbar>
+        
+        <div>
+          <img src="img/a.jpg" style="width: 100%; margin-bottom:3em;">
+        </div>
+
+        <div>
+          <img src="img/g-line.png" style="width: 90%; margin-left: 5%; margin-right: 5%; margin-bottom:3em;">
+        </div>
+        
+        <div class="col-xs-6" style="text-align:center;">
+            <img src="img/b.jpg" style="width: 100%;">
+            <h2>New Arrivals</h2>
+            <p>
+            Rayakan Hari-Hari Kamu <br/>
+            dengan Koleksi Terbaru Aldo
+            </p>    
+            <ons-button id="push-button-third" onclick="fn.load('product.html')">Push page</ons-button>         
+        </div>
+        
+        <div class="col-xs-6" style="text-align:center;">
+          <img src="img/c.jpg" style="width: 100%;">
+            <h2>Mango Collection</h2>
+            <p>
+            Miliki koleksi blouse, dress, sepatu, <br/>
+            dan aksesoris dari MANGO.
+            </p>    
+            <ons-button  id="push-button-third" onclick="fn.load('about.html')">Push page</ons-button>     
+        </div>
+           
+        
+        <ons-button id="push-button-third" onclick="fn.load('home.html')">Push page</ons-button>
+        
+      </ons-page>
+    </ons-template>
+
+    <ons-template id="wanita.html">
+      <ons-page>
+        <ons-toolbar>
+          <div class="left">
+            <ons-toolbar-button onclick="fn.open()">
+              <ons-icon icon="md-menu"></ons-icon>
+            </ons-toolbar-button>
+          </div>
+          <div class="center">
+              Wanita            
+          </div>
+        </ons-toolbar>
+        <ons-carousel fullscreen swipeable auto-scroll overscrollable id="carousel">
+          <ons-carousel-item style="background-color: #085078;">
+            <img src="img/f.jpg" style="width: 100%;">
+          </ons-carousel-item>
+          <ons-carousel-item style="background-color: #373B44;">
+            <img src="img/g.jpg" style="width: 100%;">
+          </ons-carousel-item>
+          <ons-carousel-item style="background-color: #D38312;">
+            <img src="img/h.jpg" style="width: 100%;">
+          </ons-carousel-item>
+        </ons-carousel>
+
+
+
+        
+      </ons-page>
+    </ons-template>
+
+    <ons-template id="pria.html">
+      <ons-page>
+        <ons-toolbar>
+          <div class="left">
+            <ons-toolbar-button onclick="fn.open()">
+              <ons-icon icon="md-menu"></ons-icon>
+            </ons-toolbar-button>
+          </div>
+          <div class="center">
+            Pria
+          </div>
+        </ons-toolbar>
+        <p style="text-align: center; opacity: 0.6; padding-top: 20px;">
+          Ini Halaman Pria
+        </p>
+      </ons-page>
+    </ons-template>
+
+    <ons-template id="anak.html">
+      <ons-page>
+        <ons-toolbar>
+          <div class="left">
+            <ons-toolbar-button onclick="fn.open()">
+              <ons-icon icon="md-menu"></ons-icon>
+            </ons-toolbar-button>
+          </div>
+          <div class="center">
+            Anak
+          </div>
+        </ons-toolbar>
+        <p style="text-align: center; opacity: 0.6; padding-top: 20px;">
+          Ini Halaman Anak
+        </p>
+      </ons-page>
+    </ons-template>
+
+    <ons-template id="login.html">
+      <ons-page>
+        <ons-toolbar>
+          <div class="left">
+            <ons-toolbar-button onclick="fn.open()">
+              <ons-icon icon="md-menu"></ons-icon>
+            </ons-toolbar-button>
+          </div>
+          <div class="center">
+            Login
+          </div>
+        </ons-toolbar>
+        <div style="text-align: center; margin-top: 30px;">
+          <p>
+            <ons-input id="username" modifier="underbar" placeholder="Username" float></ons-input>
+          </p>
+          <p>
+            <ons-input id="password" modifier="underbar" type="password" placeholder="Password" float></ons-input>
+          </p>
+          <p style="margin-top: 30px;">
+            <ons-button onclick="fn.login('home.html')">Sign in</ons-button>
+          </p>
+      </div>
+      </ons-page>
+    </ons-template>
+
+     <ons-template id="cart.html">
+      <ons-page>
+        <ons-toolbar>
+          <div class="left">
+            <ons-toolbar-button onclick="fn.open()">
+              <ons-icon icon="md-menu"></ons-icon>
+            </ons-toolbar-button>
+          </div>
+          <div class="center">
+            Cart
+          </div>
+        </ons-toolbar>
+        <p style="text-align: center; opacity: 0.6; padding-top: 20px;">
+          Ini Halaman Cart
+        </p>
+      </ons-page>
+    </ons-template>
+
+
+  </body>
 </html>
